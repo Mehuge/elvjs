@@ -14,7 +14,7 @@ A small but powerful event emitter for JavaScript and TypeScript
   ```TypeScript
   import events from 'elvjs';
   const handler = events.on('test-event', (...args) => {
-    console.log('test-event fired ', ...args);
+    console.log('test-event fired', ...args);
   });
   events.fire('test-event', 1);
   events.fire('test-event', 1, 2);
@@ -26,8 +26,22 @@ A small but powerful event emitter for JavaScript and TypeScript
 
   ```JavaScript
   const { events } = require("elvjs");
-  const handler = events.on('test-event', function () {
-    console.log('test-event fired ' + Array.prototype.join.call(arguments, ' '));
+  const handler = events.on('test-event', function (...args) {
+    console.log('test-event fired', ...args); 
+  });
+  events.fire('test-event', 1);
+  events.fire('test-event', 1, 2);
+  events.fire('test-event', 1, 2, 3);
+  events.off(handler);
+  ```
+
+
+### Nodejs (es5)
+
+  ```JavaScript
+  var events = require("elvjs").events;
+  var handler = events.on('test-event', function () {
+    console.log('test-event fired', Array.prototype.join.call(arguments,' ')); 
   });
   events.fire('test-event', 1);
   events.fire('test-event', 1, 2);
