@@ -1,8 +1,9 @@
 {
   "name": "elvjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Elvis has left the building - Event Emitter",
-  "main": "lib/index.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "keywords": [
     "events",
     "emitter"
