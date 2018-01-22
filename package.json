@@ -13,8 +13,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
     "browserify": "^15.2.0",
     "google-closure-compiler-js": "^20180101.0.0",
     "mocha": "^3.2.0",
@@ -23,18 +21,17 @@
     "typescript": "^2.2.2"
   },
   "scripts": {
-    "clean-tmp": "rimraf tmp tmpp",
-    "minify": "google-closure-compiler-js --warningLevel=QUIET lib/elvjs.js >lib/elvjs.min.js",
-    "build-lib": "npm run clean-tmp && tsc && npm run babel && npm run browserify && npm run minify",
+    "clean-build": "rimraf build",
+    "minify": "google-closure-compiler-js --warningLevel=QUIET lib/index.js >lib/elvjs.min.js",
+    "build-lib": "npm run clean-build && tsc && npm run browserify && npm run minify",
     "clean-tests": "rimraf tests/build",
     "build-tests": "npm run clean-tests && tsc -p tsconfig.test.json",
     "tests": "mocha tests/build/tests/index.js",
     "build": "npm run build-lib && npm test",
     "test": "npm run build-tests && npm run tests",
-    "babel": "babel tmp -d tmpp",
-    "browserify": "browserify tmpp/index.js > lib/elvjs.js && npm run browserify-post",
-    "copy": "cp src/*.ts lib && cp tmp/*.d.ts lib",
-    "browserify-post": "npm run copy && npm run clean-tmp"
+    "browserify": "browserify build/index.js > lib/index.js && npm run browserify-post",
+    "copy": "cp src/*.ts lib && cp build/*.d.ts lib",
+    "browserify-post": "npm run copy && npm run clean-build"
   },
   "repository": {
     "type": "git",

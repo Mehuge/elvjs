@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
         "experimentalDecorators": true,
-        "target": "es6",
+        "target": "es5",
         "noImplicitAny": true,
         "removeComments": false,
-        "outDir": "./tmp",
+        "outDir": "./build",
         "sourceMap": false,
         "jsx": "react",
         "module": "commonjs",
+		"moduleResolution": "node",
         "declaration": true,
         "newLine": "LF"
     },
