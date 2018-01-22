@@ -22,12 +22,11 @@ A small but powerful event emitter for JavaScript and TypeScript
   events.off(handler);
   ```
 
-### Nodejs
+### Nodejs (es6)
 
   ```JavaScript
-  var events = require("elvjs").default;
-  console.dir(events);
-  var handler = events.on('test-event', function () {
+  const { events } = require("elvjs");
+  const handler = events.on('test-event', function () {
     console.log('test-event fired ' + Array.prototype.join.call(arguments, ' '));
   });
   events.fire('test-event', 1);
