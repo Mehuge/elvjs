@@ -22,6 +22,20 @@ A small but powerful event emitter for JavaScript and TypeScript
   events.off(handler);
   ```
 
+### Nodejs
+
+  ```JavaScript
+  var events = require("elvjs").default;
+  console.dir(events);
+  var handler = events.on('test-event', function () {
+    console.log('test-event fired ' + Array.prototype.join.call(arguments, ' '));
+  });
+  events.fire('test-event', 1);
+  events.fire('test-event', 1, 2);
+  events.fire('test-event', 1, 2, 3);
+  events.off(handler);
+  ```
+
 ## Tests
 
   ```npm test```
