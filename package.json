@@ -1,9 +1,9 @@
 {
   "name": "elvjs",
   "version": "1.0.2",
-  "description": "Elvis has left the building - Event Emitter",
+  "description": "Elvis has left the building - Tiny (3k) Event Emitter",
   "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "keywords": [
     "events",
     "emitter"
@@ -11,7 +11,9 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "copy-cmd": "^1.0.1"
+  },
   "devDependencies": {
     "browserify": "^15.2.0",
     "google-closure-compiler-js": "^20180101.0.0",
@@ -21,17 +23,16 @@
     "typescript": "^2.2.2"
   },
   "scripts": {
-    "clean-build": "rimraf build",
-    "minify": "google-closure-compiler-js --warningLevel=QUIET lib/index.js >lib/elvjs.min.js",
-    "build-lib": "npm run clean-build && tsc && npm run browserify && npm run minify",
-    "clean-tests": "rimraf tests/build",
-    "build-tests": "npm run clean-tests && tsc -p tsconfig.test.json",
-    "tests": "mocha tests/build/tests/index.js",
     "build": "npm run build-lib && npm test",
-    "test": "npm run build-tests && npm run tests",
-    "browserify": "browserify build/index.js > lib/index.js && npm run browserify-post",
-    "copy": "cp src/*.ts lib && cp build/*.d.ts lib",
-    "browserify-post": "npm run copy && npm run clean-build"
+    "build-lib": "npm run clean-build && tsc && npm run copy && npm run browserify && npm run clean-build",
+    "clean-build": "rimraf build",
+    "build-tests": "npm run clean-tests && tsc -p tsconfig.test.json",
+    "clean-tests": "rimraf tests/build",
+    "tests": "mocha tests/build/tests/index.js",
+    "browserify": "browserify build/index.js > lib/elvjs.js && npm run minify",
+    "minify": "google-closure-compiler-js --warningLevel=QUIET lib/elvjs.js >lib/elvjs.min.js",
+    "copy": "copy src/*.ts build/*.d.ts build/*.js lib",
+    "test": "npm run build-tests && npm run tests"
   },
   "repository": {
     "type": "git",
