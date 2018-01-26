@@ -7,6 +7,10 @@ A small but powerful event emitter for JavaScript and TypeScript
 
   ``npm i elvjs --save``
 
+## Documentation
+
+* [API Reference](https://github.com/Mehuge/elvjs/wiki)
+
 ## Basic Usage
 
 ### TypeScript
@@ -27,7 +31,7 @@ A small but powerful event emitter for JavaScript and TypeScript
   ```JavaScript
   const { events } = require("elvjs");
   const handler = events.on('test-event', function (...args) {
-    console.log('test-event fired', ...args); 
+    console.log('test-event fired', ...args);
   });
   events.fire('test-event', 1);
   events.fire('test-event', 1, 2);
@@ -41,7 +45,7 @@ A small but powerful event emitter for JavaScript and TypeScript
   ```JavaScript
   var events = require("elvjs").events;
   var handler = events.on('test-event', function () {
-    console.log('test-event fired', Array.prototype.join.call(arguments,' ')); 
+    console.log('test-event fired', Array.prototype.join.call(arguments,' '));
   });
   events.fire('test-event', 1);
   events.fire('test-event', 1, 2);
@@ -55,5 +59,6 @@ A small but powerful event emitter for JavaScript and TypeScript
 
 ## Release History
 
+* 1.0.8 Documentation Update
+* 1.0.7 First complete release
 * 1.0.0 Initial release
-
