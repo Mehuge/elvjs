@@ -10,6 +10,7 @@ A small but powerful event emitter for JavaScript and TypeScript
 ## Documentation
 
 * [API Reference](https://github.com/Mehuge/elvjs/wiki)
+* [Example on RunKit](https://runkit.com/mehuge/elvjs)
 
 ## Basic Usage
 
